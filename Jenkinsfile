@@ -10,20 +10,20 @@ pipeline {
 
         stage('Run API Tests') {
             steps {
-                sh 'mvn clean test -Dsurefire.suiteXmlFiles=testng-api.xml'
+                bat 'mvn clean test -Dsurefire.suiteXmlFiles=testng-api.xml'
             }
         }
     }
 
     post {
-    always {
-        echo 'Tests completed'
+        always {
+            echo 'Tests completed'
+        }
+        success {
+            echo 'All API tests passed'
+        }
+        failure {
+            echo 'Some API tests failed'
+        }
     }
-    success {
-        echo 'All API tests passed'
-    }
-    failure {
-        echo 'Some API tests failed'
-    }
-}
 }

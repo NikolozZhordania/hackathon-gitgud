@@ -16,18 +16,14 @@ pipeline {
     }
 
     post {
-        always {
-            publishHTML(target: [
-                reportDir: 'target/allure-results',
-                reportFiles: 'index.html',
-                reportName: 'Allure Report'
-            ])
-        }
-        success {
-            echo 'All API tests passed'
-        }
-        failure {
-            echo 'Some API tests failed'
-        }
+    always {
+        echo 'Tests completed'
     }
+    success {
+        echo 'All API tests passed'
+    }
+    failure {
+        echo 'Some API tests failed'
+    }
+}
 }

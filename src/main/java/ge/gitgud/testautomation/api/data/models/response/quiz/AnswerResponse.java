@@ -8,12 +8,12 @@ import lombok.Getter;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AnswerResponse {
 
-    @JsonProperty("isCorrect")
-    private Boolean isCorrect;
+    @JsonProperty("correct")
+    private Boolean correct;
 
-    @JsonProperty("message")
-    private String message;
+    @JsonProperty("quizCompleted")
+    private Boolean quizCompleted;
 
-    @JsonProperty("rewardAmount")
-    private Integer rewardAmount;
+    @JsonProperty("nextQuestion")
+    private QuizQuestionResponse nextQuestion;
 }

@@ -14,7 +14,7 @@ public class ApproveRejectRequestTests extends BaseTest {
     @Story("Successful Approval")
     @Description("POST /api/bank/approve")
     @Test(description = "Parent's Successful Approval of Child's Money Request")
-    public void parentSuccessfulApprovalOfChildMoneyRequestTest() {
+    public void parentSuccessfulApprovalOfChildMoneyRequest() {
         bankSteps
                 .requestMoneyAndStoreId(VALID_CHILD_ID, VALID_AMOUNT)
                 .validateStatusCode(200)
@@ -27,7 +27,7 @@ public class ApproveRejectRequestTests extends BaseTest {
     @Story("Successful Approval")
     @Description("POST /api/bank/approve")
     @Test(description = "Parent's Approval Response Content Type Verification")
-    public void parentApprovalResponseContentTypeVerificationTest() {
+    public void parentApprovalResponseContentTypeVerification() {
         bankSteps
                 .requestMoneyAndStoreId(VALID_CHILD_ID, VALID_AMOUNT)
                 .validateStatusCode(200)
@@ -39,7 +39,7 @@ public class ApproveRejectRequestTests extends BaseTest {
     @Story("Successful Rejection")
     @Description("POST /api/bank/approve")
     @Test(description = "Parent's Successful Rejection of Child's Money Request")
-    public void parentSuccessfulRejectionOfChildMoneyRequestTest() {
+    public void parentSuccessfulRejectionOfChildMoneyRequest() {
         bankSteps
                 .requestMoneyAndStoreId(VALID_CHILD_ID, VALID_AMOUNT)
                 .validateStatusCode(200)
@@ -52,7 +52,7 @@ public class ApproveRejectRequestTests extends BaseTest {
     @Story("Successful Rejection")
     @Description("POST /api/bank/approve")
     @Test(description = "Parent's Rejection Response Content Type Verification")
-    public void parentRejectionResponseContentTypeVerificationTest() {
+    public void parentRejectionResponseContentTypeVerification() {
         bankSteps
                 .requestMoneyAndStoreId(VALID_CHILD_ID, VALID_AMOUNT)
                 .validateStatusCode(200)
@@ -64,7 +64,7 @@ public class ApproveRejectRequestTests extends BaseTest {
     @Story("Invalid Approval")
     @Description("POST /api/bank/approve")
     @Test(description = "Parent's Approval Attempt with Non-Existent Request")
-    public void parentApprovalAttemptWithNonExistentRequestTest() {
+    public void parentApprovalAttemptWithNonExistentRequest() {
         bankSteps
                 .approveRequest(INVALID_ID)
                 .validateStatusCode(404)
@@ -74,7 +74,7 @@ public class ApproveRejectRequestTests extends BaseTest {
     @Story("Invalid Rejection")
     @Description("POST /api/bank/approve")
     @Test(description = "Parent's Rejection Attempt with Non-Existent Request")
-    public void parentRejectionAttemptWithNonExistentRequestTest() {
+    public void parentRejectionAttemptWithNonExistentRequest() {
         bankSteps
                 .rejectRequest(INVALID_ID)
                 .validateStatusCode(404)
@@ -84,7 +84,7 @@ public class ApproveRejectRequestTests extends BaseTest {
     @Story("Invalid Approval")
     @Description("POST /api/bank/approve")
     @Test(description = "Non-Existent Request Approval Error Detail Verification")
-    public void nonExistentRequestApprovalErrorDetailVerificationTest() {
+    public void nonExistentRequestApprovalErrorDetailVerification() {
         bankSteps
                 .approveRequest(INVALID_ID)
                 .validateStatusCode(404)
@@ -94,7 +94,7 @@ public class ApproveRejectRequestTests extends BaseTest {
     @Story("Invalid Rejection")
     @Description("POST /api/bank/approve")
     @Test(description = "Non-Existent Request Rejection Error Detail Verification")
-    public void nonExistentRequestRejectionErrorDetailVerificationTest() {
+    public void nonExistentRequestRejectionErrorDetailVerification() {
         bankSteps
                 .rejectRequest(INVALID_ID)
                 .validateStatusCode(404)

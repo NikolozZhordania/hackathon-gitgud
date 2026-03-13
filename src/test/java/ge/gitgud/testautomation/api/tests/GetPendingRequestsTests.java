@@ -14,7 +14,7 @@ public class GetPendingRequestsTests extends BaseTest {
     @Story("Successful Retrieval")
     @Description("GET /api/bank/parent/{parentId}/requests")
     @Test(description = "Parent's Successful Retrieval of Pending Requests")
-    public void parentSuccessfulRetrievalOfPendingRequestsTest() {
+    public void parentSuccessfulRetrievalOfPendingRequests() {
         bankSteps
                 .getPendingRequests(VALID_PARENT_ID)
                 .validateStatusCode(200)
@@ -25,7 +25,7 @@ public class GetPendingRequestsTests extends BaseTest {
     @Story("Successful Retrieval")
     @Description("GET /api/bank/parent/{parentId}/requests")
     @Test(description = "Parent's Pending Requests Response Body Verification")
-    public void parentPendingRequestsResponseBodyVerificationTest() {
+    public void parentPendingRequestsResponseBodyVerification() {
         bankSteps
                 .getPendingRequests(VALID_PARENT_ID)
                 .validateStatusCode(200)
@@ -35,7 +35,7 @@ public class GetPendingRequestsTests extends BaseTest {
     @Story("Successful Retrieval")
     @Description("GET /api/bank/parent/{parentId}/requests")
     @Test(description = "Parent's Pending Requests Content Type Verification")
-    public void parentPendingRequestsContentTypeVerificationTest() {
+    public void parentPendingRequestsContentTypeVerification() {
         bankSteps
                 .getPendingRequests(VALID_PARENT_ID)
                 .validateStatusCode(200)
@@ -45,7 +45,7 @@ public class GetPendingRequestsTests extends BaseTest {
     @Story("Invalid Retrieval")
     @Description("GET /api/bank/parent/{parentId}/requests")
     @Test(description = "Parent's Retrieval of Requests with Non-Existent Parent")
-    public void parentRetrievalOfRequestsWithNonExistentParentTest() {
+    public void parentRetrievalOfRequestsWithNonExistentParent() {
         bankSteps
                 .getPendingRequests(INVALID_ID)
                 .validateStatusCode(404)
@@ -55,7 +55,7 @@ public class GetPendingRequestsTests extends BaseTest {
     @Story("Invalid Retrieval")
     @Description("GET /api/bank/parent/{parentId}/requests")
     @Test(description = "Parent's Not Found Error Response Detail Verification")
-    public void parentNotFoundErrorResponseDetailVerificationTest() {
+    public void parentNotFoundErrorResponseDetailVerification() {
         bankSteps
                 .getPendingRequests(INVALID_ID)
                 .validateStatusCode(404)

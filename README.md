@@ -1,1 +1,1 @@
-# hackathon-gitgud
+# hackathon-gitgud-ci-cd

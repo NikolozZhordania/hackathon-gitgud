@@ -3,6 +3,18 @@
 
 <suite name="API Test Suite" verbose="1">
 
+    <test name="Child CRUD Flow Tests">
+        <classes>
+            <class name="ge.gitgud.testautomation.api.tests.ChildCrudFlowTests"/>
+        </classes>
+    </test>
+
+    <test name="Parent CRUD Flow Tests">
+        <classes>
+            <class name="ge.gitgud.testautomation.api.tests.ParentCrudFlowTests"/>
+        </classes>
+    </test>
+
     <test name="Request Money Tests">
         <classes>
             <class name="ge.gitgud.testautomation.api.tests.RequestMoneyTests"/>
@@ -30,6 +42,12 @@
     <test name="Submit Quiz Answer Tests">
         <classes>
             <class name="ge.gitgud.testautomation.api.tests.SubmitQuizAnswerTests"/>
+        </classes>
+    </test>
+
+    <test name="Quiz Streak Flow Tests">
+        <classes>
+            <class name="ge.gitgud.testautomation.api.tests.QuizStreakFlowTests"/>
         </classes>
     </test>
 

@@ -31,4 +31,11 @@ public class QuizAPI extends BaseAPIClient {
                 .body("{\"childId\": " + childId + "}")
                 .post(BankConstants.Paths.BASE + BankConstants.Endpoints.ANSWER_QUIZ);
     }
+
+    public Response getStreak(int childId) {
+        return given()
+                .baseUri(BankConstants.URI.BASE)
+                .pathParam(BankConstants.Params.CHILD_ID, childId)
+                .get(BankConstants.Paths.BASE + BankConstants.Endpoints.GET_STREAK);
+    }
 }

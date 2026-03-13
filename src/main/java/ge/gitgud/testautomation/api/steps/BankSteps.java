@@ -6,7 +6,10 @@ import ge.gitgud.testautomation.api.data.models.request.CreateRequestDto;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
+import java.util.List;
+
 import static ge.gitgud.testautomation.api.client.BaseAPIClient.waitBetweenRequests;
+import static ge.gitgud.testautomation.api.data.constants.BankConstants.TestData.VALID_PARENT_ID;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -27,12 +30,15 @@ public class BankSteps {
     public BankSteps requestMoneyAndStoreId(int childId, double amount) {
         waitBetweenRequests();
         this.rawResponse = api.requestMoney(new CreateRequestDto(childId, amount));
-        System.out.println("REQUEST MONEY RESPONSE: " + rawResponse.getBody().asString());
         if (rawResponse.statusCode() == 200) {
-            Integer id = rawResponse.jsonPath().get("id");
-            if (id == null) id = rawResponse.jsonPath().get("requestId");
-            assertThat("Created request ID must not be null", id, notNullValue());
-            this.lastCreatedRequestId = id;
+            waitBetweenRequests();
+            Response pendingResponse = api.getPendingRequests(VALID_PARENT_ID);
+            List<Integer> ids = pendingResponse.jsonPath().getList("id");
+            if (ids == null || ids.isEmpty()) {
+                ids = pendingResponse.jsonPath().getList("requestId");
+            }
+            assertThat("Pending requests must not be empty", ids, not(empty()));
+            this.lastCreatedRequestId = ids.get(ids.size() - 1); // take the most recent
         }
         return this;
     }
@@ -104,6 +110,13 @@ public class BankSteps {
     public BankSteps validateErrorDetailIsNotEmpty() {
         String detail = rawResponse.jsonPath().getString("detail");
         assertThat("Error detail must not be null or empty", detail, not(emptyOrNullString()));
+        return this;
+    }
+
+    @Step("Validate pending requests list is not empty")
+    public BankSteps validatePendingRequestsListIsNotEmpty() {
+        List<Object> requests = rawResponse.jsonPath().getList(".");
+        assertThat("Pending requests list must not be empty", requests, not(empty()));
         return this;
     }
 }

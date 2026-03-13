@@ -6,11 +6,14 @@ import lombok.Getter;
 
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class QuizOptionResponse {
+public class StreakResponseDto {
 
-    @JsonProperty("id")
-    private Integer id;
+    @JsonProperty("childId")
+    private Integer childId;
 
-    @JsonProperty("text")
-    private String text;
+    @JsonProperty("currentStreak")
+    private Integer currentStreak;
+
+    @JsonProperty("bestStreak")
+    private Integer bestStreak;
 }
